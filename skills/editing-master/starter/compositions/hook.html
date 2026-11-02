@@ -1,0 +1,57 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+    }
+    #hk-stage,
+    #hk-flood {
+      position: absolute;
+      inset: 0;
+    }
+    #hk-flood {
+      background: #00949d;
+    }
+    .hk-w {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 445px;
+      text-align: center;
+      font-size: 190px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: #02191a;
+      opacity: 0;
+    }
+    .hk-w.light {
+      color: #f4f8f8;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="hk-stage" class="clip" data-start="0" data-duration="4.6">
+      <div id="hk-flood"></div>
+      <div class="hk-w" id="w1">This video</div>
+      <div class="hk-w" id="w2">wasn't filmed.</div>
+      <div class="hk-w light" id="w3">It was</div>
+      <div class="hk-w light" id="w4">written in code.</div>
+    </div>
+  </div>
+  <script>
+    // One-word screens: each beat enters on its spoken word (transcript time + 0.2 s).
+    const tl = gsap.timeline({ paused: true });
+    const BEATS = [["#w1", 0.3], ["#w2", 0.95], ["#w3", 2.0], ["#w4", 2.5]];
+    BEATS.forEach(([id, t], i) => {
+      tl.fromTo(id, { opacity: 0, scale: 1.18, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, t);
+      const next = BEATS[i + 1];
+      if (next) tl.to(id, { opacity: 0, scale: 0.94, duration: 0.08, ease: "power2.in" }, next[1] - 0.04);
+    });
+    // Flood swap marks the turn in the sentence.
+    tl.to("#hk-flood", { backgroundColor: "#02191a", duration: 0.12 }, 1.96);
+    // Exit: the last words shrink and blur into the next scene.
+    tl.to("#w4", { scale: 0.18, y: -40, opacity: 0, filter: "blur(6px)", duration: 0.45, ease: "power3.in" }, 4.1);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

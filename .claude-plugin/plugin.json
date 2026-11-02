@@ -1,0 +1,12 @@
+{
+  "name": "editing-master",
+  "description": "Make hooking product videos with Claude Code and HyperFrames from a codebase, a link, screenshots or a description: one-word screens, hook cards, camera zooms, cursor clicks, transitions, voice, music and subtitles, with approval before render.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Maher Bouchrara"
+  },
+  "homepage": "https://github.com/Maher-bouchrara/Editing-Master-skill",
+  "repository": "https://github.com/Maher-bouchrara/Editing-Master-skill",
+  "license": "MIT",
+  "keywords": ["video", "hyperframes", "demo", "product-video", "kinetic-type", "editing"]
+}

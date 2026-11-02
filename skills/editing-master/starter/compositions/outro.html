@@ -1,0 +1,45 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+    }
+    #ou-stage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 30px;
+      text-align: center;
+    }
+    #ou-line {
+      font-size: 96px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #f4f8f8;
+      opacity: 0;
+    }
+    #ou-line span {
+      color: #00949d;
+    }
+    #ou-by {
+      font-size: 34px;
+      color: #9fb8be;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="outro" data-width="1920" data-height="1080">
+    <div id="ou-stage" class="clip" data-start="0" data-duration="3.8">
+      <div id="ou-line">One line that sums up <span>the value.</span></div>
+      <div id="ou-by">Your logo · Powered by …</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ou-line", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 0.2);
+    tl.fromTo("#ou-by", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.0);
+    window.__timelines["outro"] = tl;
+  </script>
+</template>

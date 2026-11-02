@@ -1,0 +1,145 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+      overflow: hidden;
+      color: #e8f1f2;
+    }
+    #uf-stage,
+    #uf-cam {
+      position: absolute;
+      inset: 0;
+    }
+    /* A stand-in app window: replace with the product's real UI rebuilt from its source. */
+    #uf-win {
+      position: absolute;
+      left: 360px;
+      top: 170px;
+      width: 1200px;
+      height: 740px;
+      border-radius: 18px;
+      background: #0b1416;
+      border: 1.5px solid rgba(0, 148, 157, 0.45);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+      opacity: 0;
+    }
+    .uf-bar {
+      height: 56px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      background: #102225;
+      border-radius: 18px 18px 0 0;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .uf-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 26px 40px 0;
+      padding: 24px 28px;
+      border-radius: 14px;
+      background: #13282b;
+      font-size: 30px;
+    }
+    .uf-sw {
+      position: relative;
+      width: 84px;
+      height: 46px;
+      border-radius: 23px;
+      background: #2b4c50;
+    }
+    .uf-sw i {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f4f8f8;
+    }
+    #uf-chip {
+      position: absolute;
+      left: 80px;
+      top: 70px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: #00949d;
+      color: #02191a;
+      font-size: 30px;
+      font-weight: 900;
+      opacity: 0;
+    }
+    #uf-cursor {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 18px solid #f4f8f8;
+      border-top: 10px solid transparent;
+      border-bottom: 18px solid transparent;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+      opacity: 0;
+    }
+    #uf-ripple {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      margin: -30px 0 0 -30px;
+      border-radius: 50%;
+      border: 3px solid #7ee6f5;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="ui-focus" data-width="1920" data-height="1080">
+    <div id="uf-stage" class="clip" data-start="0" data-duration="10">
+      <div id="uf-cam">
+        <div id="uf-win">
+          <div class="uf-bar">Your app</div>
+          <div class="uf-row">Protection<span class="uf-sw" id="sw1"><i></i></span></div>
+          <div class="uf-row">Notifications<span class="uf-sw" id="sw2"><i></i></span></div>
+          <div class="uf-row">Dark mode<span class="uf-sw" id="sw3"><i></i></span></div>
+        </div>
+        <div id="uf-ripple"></div>
+        <div id="uf-cursor"></div>
+      </div>
+      <div id="uf-chip">Step 1 · Turn protection on</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Camera: put point (cx, cy) at the screen centre, scaled by s. #uf-cam has origin 0 0.
+    const focus = (cx, cy, s) => ({ x: 960 - cx * s, y: 540 - cy * s, scale: s });
+    tl.set("#uf-cam", { transformOrigin: "0px 0px" }, 0);
+    // The switch of the first row sits at about (1452, 281) on the stage.
+    const SW = [1452, 281];
+
+    tl.fromTo("#uf-win", { opacity: 0, y: 40, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 0.2);
+    // Step chip: appears at the new step, then leaves so it never covers the UI.
+    tl.fromTo("#uf-chip", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.8);
+    tl.to("#uf-chip", { opacity: 0, duration: 0.3 }, 3.4);
+
+    // Push in on the control the voice names.
+    tl.to("#uf-cam", { ...focus(SW[0] - 200, SW[1] + 40, 1.8), duration: 0.9, ease: "power3.inOut" }, 1.6);
+    // Cursor moves with intent and arrives just before the word.
+    tl.fromTo("#uf-cursor", { opacity: 0, x: 1150, y: 520 }, { opacity: 1, duration: 0.2 }, 2.4);
+    tl.to("#uf-cursor", { x: SW[0], y: SW[1], duration: 0.7, ease: "power2.inOut" }, 2.6);
+    // Click on the word: cursor press, ripple, ONE state change.
+    tl.to("#uf-cursor", { scale: 0.85, duration: 0.1, yoyo: true, repeat: 1 }, 3.4);
+    tl.fromTo("#uf-ripple", { x: SW[0], y: SW[1], opacity: 0.9, scale: 0.3 }, { scale: 1.6, opacity: 0, duration: 0.5, ease: "power2.out" }, 3.4);
+    tl.to("#sw1", { backgroundColor: "#00949d", duration: 0.2 }, 3.45);
+    tl.to("#sw1 i", { x: 38, duration: 0.2, ease: "power2.out" }, 3.45);
+    // Hold 1.5 s after the action so it can be seen, then pull back.
+    tl.to("#uf-cam", { x: 0, y: 0, scale: 1, duration: 0.9, ease: "power3.inOut" }, 5.2);
+    tl.to("#uf-cursor", { opacity: 0, duration: 0.2 }, 5.2);
+    // Exit: blur out.
+    tl.to("#uf-stage", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, 9.6);
+    window.__timelines["ui-focus"] = tl;
+  </script>
+</template>
