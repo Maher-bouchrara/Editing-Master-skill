@@ -64,14 +64,15 @@ and does the machine work in between without asking.
 
 **Stop 1 · The plan** (one message, steps 1–3). Ask the brief questions (step 1), show the
 video-skill menu with your recommendation (step 2), and ask the style questions with your
-recommended answer for each (step 3, subtitles included). End with: "Answer what you want
+recommended answer for each (step 3, word and transition sounds and subtitles included). End with: "Answer what you want
 to change, or say **use your picks**." One reply settles all of it. Repeat the final plan
 back in a few lines, with the total time to the preview, and go on without another stop.
 
 **Between stops 1 and 2, without asking:** study the product (step 7), write the script
 (step 8), and prepare the listening pack: the hook line in 3 voices, 15–20 s samples of
 3 music tracks, a voice + music mix at the planned level using your recommended voice and
-track, and the sound-effect reel (steps 4–6). Say how long this takes before you start
+track, the sound-effect reel, and a 5–10 s demo of one one-word screen voiced word by word
+with its word sounds (steps 4–6). Say how long this takes before you start
 (usually a few minutes), and run the voice and music work in parallel with the study.
 
 **Stop 2 · Script, screens and sounds** (one message). Send the script table, the list of
@@ -149,7 +150,13 @@ give its install command and wait.
 3. Camera: light / medium / strong zooms (recommend medium).
 4. Kinetic type: one-word screens for the hook, chapter cards, a "this is the easiest part"
    hook card? Which moments? (Show `docs/img` examples or describe them.)
-5. Subtitles: none, **burned into the video**, or **separate subtitle files**? Then which
+5. Sounds on one-word screens and transitions: a short sound on each word as it lands
+   (pop, hit, tick, snap, a boom on the key word, a riser into a reveal, or none)? The same
+   sound on every word, or a different one on the key word? A sound on each transition
+   (swoosh, whoosh, impact)? Recommend e.g. "pop on each word, hit on the key word,
+   swoosh on chapter wipes". The voice says each one-word-screen word on its own, stressed,
+   in the screen's tone. See `references/music-sfx-subtitles.md`.
+6. Subtitles: none, **burned into the video**, or **separate subtitle files**? Then which
    languages?
    - Burned in: always visible, on every platform and with sound off (social feeds, ads),
      but one language only and a change means a re-render.
@@ -159,7 +166,7 @@ give its install command and wait.
    - Recommend burned in for short social clips that autoplay muted, separate files for
      how-tos and anything in several languages. Both is fine (burn in the main language,
      ship files for all).
-6. Brand: read colours, logo and fonts from the source; only ask what is missing, and show
+7. Brand: read colours, logo and fonts from the source; only ask what is missing, and show
    the palette you will use.
 
 ### 4 · Voice: listen, then choose
@@ -188,7 +195,10 @@ minutes per clip; a paid catalog (HeyGen music) is instant but needs an account.
 ### 6 · Sound effects: listen, then confirm
 
 Send the click, pop, whoosh and typing sounds you plan to use (one short file each, or one
-file with all of them in a row). Ask: keep, change, or no effects.
+file with all of them in a row), plus the word sounds and transition sounds chosen in
+step 3. Then send a 5–10 s demo of one one-word screen: each word voiced on its own with
+its sound on its word time, so voice and sounds are heard together. Ask: keep, change
+(per word if they like), or no effects.
 
 ### 7 · Study the product
 
@@ -214,7 +224,9 @@ snapshot), and ask: "Is this how it looks, and are these the right steps?" Wait.
 
 ### 8 · Script (wait for "approved")
 
-A scene table: time · on screen · voiceover · effect (one-word screen, zoom, hook card…). Rules in `references/kinetic-type-and-hooks.md`
+A scene table: time · on screen · voiceover · effect (one-word screen, zoom, hook card…) ·
+sound (per word on one-word screens, per transition). Write one-word lines with full stops
+between words ("Paste. Mask. Send.") so the voice stresses each word. Rules in `references/kinetic-type-and-hooks.md`
 (hook in 5 s, one idea per scene, 15–20 words per scene, every sentence shown on screen,
 an attention reset every 20–30 s). Send it and wait for "approved"; change it as often as
 asked. Voice the lines only after approval (≈ 1 min for a 2-minute script with Kokoro; say
@@ -277,6 +289,8 @@ Do not decide where the video is published, and do not commit or push unless ask
 - Fast track: three stops (plan; script, screens and sounds; preview), then "render".
   Step by step: ask before every next step. In both, say how long things take.
 - Ask burned-in or separate subtitle files; never assume.
+- Ask which sound lands on each one-word-screen word and on each transition; the voice says
+  those words one by one in the screen's tone, and the user hears a demo first.
 - The user hears every voice, music track and sound effect before the film is final (as
   samples first; in fast track with "just do it", at the latest in the preview).
 - Script approval before voicing it; preview approval before rendering.

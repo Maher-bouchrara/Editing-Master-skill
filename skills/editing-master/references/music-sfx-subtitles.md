@@ -31,6 +31,85 @@ ffmpeg -i voice.wav -i track.mp3 -filter_complex "[1]atrim=60:75,asetpts=PTS-STA
 - Play them to the user before using them (one file with all effects in a row is enough):
   `ffmpeg -i click.mp3 -i pop.mp3 -i whoosh.mp3 -filter_complex "[0][1][2]concat=n=3:v=0:a=1" sfx-preview.mp3`
 
+## Word and transition sounds
+
+On one-word screens, every word can land with a short sound, and every transition can
+have its own sound. Voice, word and sound hit together: that is what makes the screen
+punch. **Ask the user**, never assume: sounds on the words? which kind? the same for every
+word, or a different one on the key word? sounds on the transitions?
+
+### Sounds for words (pick one family per screen)
+
+| Sound | Feel | Fits |
+|---|---|---|
+| Hit / punch (short low thump) | strong, confident | hooks, claims, numbers ("3 clicks. 0 setup.") |
+| Pop | light, friendly | consumer apps, playful tone |
+| Typewriter key / tick | precise, techy | developer tools, step lists |
+| Camera shutter / snap | quick, editorial | feature lists, "before / after" |
+| Bass drop or boom | big moment | one key word only (the brand, the result) |
+| Riser (0.5–1 s) into a hit | build-up | the last word of the hook, a reveal |
+| None | calm | serious topics, slow explainers |
+
+Offer a default pattern, e.g. "a pop on every word, a hit on the key word, a riser into the
+brand name", and let the user change it word by word.
+
+### Sounds for transitions
+
+| Transition | Sound |
+|---|---|
+| Circle wipe (chapter, hook card) | swoosh, or a riser + hit on the card |
+| Flood reveal (inside one-word screens) | the word sound above |
+| Shrink into | reverse whoosh ("suck in") |
+| Zoom through | whoosh into an impact on the cut |
+| Whip pan | fast whoosh |
+| Blur out | soft air, or nothing |
+
+### Timing and levels
+
+- Each sound starts on the word's entry (the same time the word appears, = its word time
+  from the transcript); a riser ends exactly on its word. A transition sound peaks on the
+  cut.
+- Keep word sounds short (under ≈ 0.25 s) so they do not cover the next word. If beats are
+  closer than ≈ 0.25 s apart, use a lighter tick, or a sound on every other word.
+- Vary the pitch slightly from word to word (±2–4 %) so a row of hits does not sound
+  robotic: `ffmpeg -i pop.wav -af "asetrate=44100*1.03,aresample=44100" pop-up.wav`.
+- Levels: word pops and ticks 0.2–0.28, hits 0.3–0.4, the key-word boom up to 0.45,
+  whooshes 0.3–0.35. The voice stays on top; lower the music under a dense one-word run.
+- Never two sounds on the same frame (a word sound and a click): keep the stronger one.
+- In HyperFrames, each sound is its own `<audio>` with an `id`, `class="clip"`,
+  `data-start` (the word time), `data-track-index` and `data-volume`.
+
+### Let the user hear it
+
+Before building, send a 5–10 s demo of one one-word screen: the voiced words with the
+chosen sounds on their word times, so the user hears voice and sounds together. Build it
+from the voice file and the effect files:
+
+```bash
+# voice + a pop at 0.42 s and a hit at 1.10 s
+ffmpeg -i hook.wav -i pop.wav -i hit.wav -filter_complex "[1]adelay=420|420,volume=0.25[a];[2]adelay=1100|1100,volume=0.35[b];[0][a][b]amix=inputs=3:normalize=0:duration=first" word-sounds-demo.mp3
+```
+
+In the script table, give each one-word screen a **sound** column (one sound per word), so
+the user approves the sounds word by word with the script.
+
+## Voice on one-word screens
+
+On a one-word screen the voice says each word on its own, with the tone of the screen:
+short, stressed, a tiny beat between words ("Paste. Mask. Send."). A flat sentence read at
+normal speed under punchy words feels wrong.
+
+- Write the line with full stops between words ("Three clicks. Zero setup.") so the voice
+  stops and stresses each word. Do not voice it as one comma-separated sentence.
+- For exact control, voice each word as its own file and place each at its beat; the word
+  sound and the on-screen word sit on the same time.
+- Match the tone to the screen: energetic and firm for a hook, warm for a promise, calm
+  and slower for a serious point. Kokoro has no tone controls; pick the voice and speed
+  (1.0–1.1 for punchy words) and use punctuation. Paid voices (ElevenLabs) can take a style
+  or emotion setting.
+- Let the user hear the voiced one-word line with its sounds (the demo above) before it
+  goes in.
+
 ## Final mix
 
 Normalise the finished file to −16 LUFS with peaks under −1 dBTP:

@@ -42,7 +42,12 @@ Grammar:
 | Whip pan | stage `x: 0 → −300` + motion blur in 0.25 s, next scene enters from the right | fast changes of topic |
 
 Rules: every transition has a cause (a click, a new chapter, a new topic). Use 3–5 kinds in
-a film, never the same fade on every cut. Add a whoosh only on fast moves.
+a film, never the same fade on every cut.
+
+Each transition can have its own sound (swoosh on a circle wipe, reverse whoosh on shrink
+into, whoosh + impact on zoom through, fast whoosh on a whip pan, little or nothing on a
+blur out). Ask the user whether they want transition sounds, and play them first; the
+sound peaks on the cut. See `music-sfx-subtitles.md`, "Word and transition sounds".
 
 ## Scene structure (HyperFrames)
 

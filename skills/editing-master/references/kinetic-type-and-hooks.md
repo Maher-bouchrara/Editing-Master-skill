@@ -26,6 +26,10 @@ Then the brand reveal (2–3 s), then numbered steps.
 - Swap the flood colour (brand ↔ dark) on a key word to mark a turn in the sentence.
 - Last word exits into the next scene (shrink + blur), not a plain fade.
 - One accent word in the brand colour per screen, at most.
+- Sound and voice: each word can land with a short sound (pop, hit, tick…), and the voice
+  says each word on its own, stressed, in the screen's tone ("Paste. Mask. Send."). Ask the
+  user which sound per word; see `music-sfx-subtitles.md`, "Word and transition sounds" and
+  "Voice on one-word screens".
 
 ## Word-by-word lines
 

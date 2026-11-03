@@ -64,7 +64,8 @@ everything at once and does the work in between, so you stop only three times:
    the style questions, each with a default. Answer what you want to change, or say
    **"use your picks"**.
 2. **Script, screens and sounds.** One message: the script, a rebuilt screen, and a
-   listening pack (3 voices, 3 music samples, a voice + music mix, the sound effects).
+   listening pack (3 voices, 3 music samples, a voice + music mix, the sound effects, and
+   a one-word screen voiced word by word with its sounds).
    Approve and pick in one reply.
 3. **Preview.** Ask for changes in plain words; repeat until you love it.
 
@@ -77,11 +78,13 @@ One step at a time, and it asks before each next step:
 1. **What video?** It repeats your brief back; you say yes.
 2. **Which video skill?** It shows a menu of video skills and recommends one for this
    video (HyperFrames by default).
-3. **Style.** Presenter, cursor clicks, zooms, one-word screens, subtitles (burned in or
-   separate files), brand colours; each with options and a recommendation.
+3. **Style.** Presenter, cursor clicks, zooms, one-word screens, a sound on each word and
+   each transition, subtitles (burned in or separate files), brand colours; each with
+   options and a recommendation.
 4. **Voice: listen, then choose.** The same line in 3 voices.
 5. **Music: listen, then choose.** 15–20 s samples of 3 tracks, then a voice + music mix.
-6. **Sound effects: listen, then confirm.** Clicks, pops, whooshes.
+6. **Sound effects: listen, then confirm.** Clicks, pops, whooshes, word and transition
+   sounds, and a short demo of a one-word screen with voice and sounds together.
 7. **The screens and steps.** It shows a rebuilt screen and the steps it will show.
 8. **Script.** You approve it, then listen to the full voiceover.
 9. **Preview.** Ask for changes in plain words ("slower here", "zoom on the popup",
@@ -97,7 +100,10 @@ In both modes it tells you how long each part takes (see "How long it takes").
 
 ### Hooks and one-word screens
 
-Full-colour screens, one or two words per beat, each on its spoken word.
+Full-colour screens, one or two words per beat, each on its spoken word. You choose a
+sound for each word (a pop, a hit, a tick, a boom on the key word, a riser into a reveal)
+and for each transition (swoosh, whoosh, impact), and the voice says each word on its own,
+stressed, in the screen's tone: "Paste. Mask. Send."
 
 ![One-word screens, still frames](docs/img/one-word-grid.jpg)
 
