@@ -35,4 +35,6 @@ Workflow:
    (`npx hyperframes transcribe`) and place every action at word time + 0.2 s.
 4. After any re-record: rebuild the narration, re-transcribe, re-time that scene.
 
-Cost of time on a laptop: ≈ 5 s per line, ≈ 1 min for a 2-minute script.
+Cost of time on a laptop (Kokoro): ≈ 5 s per line, mostly loading the model; ≈ 1 min for a
+2-minute script. Paid voices (HeyGen, ElevenLabs) are fast but need an account and an API
+key. Tell the user before voicing.

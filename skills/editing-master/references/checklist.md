@@ -27,3 +27,5 @@ Each rule below came from a real fix while making product videos with this workf
 - [ ] No more than ~0.6 s of silence between lines.
 - [ ] 3–5 transition kinds, each with a cause.
 - [ ] Music under the voice; effects only on visible actions.
+- [ ] Subtitles in the form the user chose (burned in or SRT/VTT files); the longest cue
+      stays inside the frame.
