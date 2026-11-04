@@ -1,5 +1,16 @@
 # Editing Master
 
+A Claude Code plugin and skill for making short product videos (how-tos, demos, teasers, explainers) with HyperFrames, step by step and with your approval at each stop.
+
+![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757?style=flat-square&logo=anthropic&logoColor=white)
+![HyperFrames](https://img.shields.io/badge/HyperFrames-HTML%20to%20video-111111?style=flat-square)
+![GSAP](https://img.shields.io/badge/GSAP-3.14-88CE02?style=flat-square&logo=greensock&logoColor=black)
+![FFmpeg](https://img.shields.io/badge/FFmpeg-audio%20%26%20subtitles-007808?style=flat-square&logo=ffmpeg&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+![Status](https://img.shields.io/badge/status-v1.0.0%20complete-brightgreen?style=flat-square)
+
+## Overview
+
 A Claude Code skill that turns your product into a short, hooking video: one-word screens,
 hook cards, camera zooms, cursor clicks, transitions, a voiceover, music and subtitles.
 Claude asks what you want, lets you hear every voice and track before it goes in, and
@@ -190,9 +201,20 @@ Render times for the first five were measured by us, render only.
 | Render (other skills) | ≈ 3.5–21 s per second of video, see "Which skill?" |
 | Your review loops | most of the time |
 
-## What's inside
+## Tech stack
+
+| Layer | Technologies |
+|---|---|
+| Packaging | Claude Code plugin (`.claude-plugin/plugin.json`, `marketplace.json`) with one skill |
+| Workflow | `SKILL.md` + Markdown reference files |
+| Video | HyperFrames (HTML compositions rendered to video), GSAP animations |
+| Audio and subtitles | Kokoro (free local voices) or HeyGen / ElevenLabs, FFmpeg, SRT / VTT |
+
+## Project structure
 
 ```
+.claude-plugin/                    plugin and marketplace manifests
+docs/img/                          the screenshots and GIFs used in this README
 skills/editing-master/
   SKILL.md                         the workflow Claude follows
   references/
@@ -200,7 +222,7 @@ skills/editing-master/
     transitions-and-camera.md      focus camera, cursor, six transitions and when to use them
     pacing-and-voice.md            reading time, rhythm, voices and samples
     music-sfx-subtitles.md         music sources and levels, effects, subtitles (burned in or SRT/VTT), cover
-    video-skills.md                the five video skills: what each is for, install, licence, render time
+    video-skills.md                the video skills menu: what each is for, install, licence, render time
     checklist.md                   the mistakes each rule prevents
   starter/                         a working HyperFrames project with all the building blocks
 ```
@@ -217,6 +239,22 @@ npx hyperframes preview
 The frames above come from two videos made with this workflow: a how-to video for
 VamiGuard, and "Video with Claude Code", a video about the method itself.
 
-## Licence
+## Tests
 
-MIT
+No automated tests. The starter project can be checked by previewing it with
+`npx hyperframes preview` (see above).
+
+## Known limitations
+
+- Needs Claude Code and the HyperFrames plugin; the starter and renders need Node.js, and the audio steps use FFmpeg.
+- Paid voices (HeyGen, ElevenLabs) and some other video skills need their own accounts and API keys.
+- Times in "How long it takes" were measured on one laptop; other machines will differ, and several skills in the menu are marked "not measured".
+- The other video skills in the menu are third-party projects with their own licences (some noncommercial or AGPL); check them before commercial use.
+
+## License
+
+[MIT](LICENSE)
+
+## Author
+
+**Maher Bouchrara** — [Portfolio](https://maher-bouchrara.vercel.app) · [GitHub](https://github.com/Maher-bouchrara) · [LinkedIn](https://www.linkedin.com/in/maher-bouchrara-35b91122b/)
